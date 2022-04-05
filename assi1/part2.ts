@@ -83,15 +83,22 @@ export interface WordTree {
     children: WordTree[];
 }
 
-const treeToArray = (t: WordTree, name:string): string[] =>{
+const treeToArray:(t:WordTree)=>string[]=
+(t:WordTree)=>
+  (t.children === [])?
+    [t.root]
+    :[t.root].concat(R.reduce(acc:string,curr:wordTree) =>
+    );
+
+/*const treeToArray = (t: WordTree, name:string): string[] =>{
   if(t.children === [])
     return [t.root];
-  const s:string[] = [t.root] + R.reduce(name:string,tree:WordTree) => name + ' ' + treeToArray(tree,'') , '' + tree.children);
+  const arr1: string[] = R.reduce(acc:Number,curr:WordTree) => 
+  const s:string[] = [t.root].concat(R.reduce(name:string,tree:WordTree) => name + ' ' + treeToArray(tree,'') , '' + tree.children);)
   return s;
-}
+}*/
 export const treeToSentence = (t: WordTree): string => {
   const out: string[] = treeToArray(t,t.root);
   return out.join(' ');
 }
-
 
